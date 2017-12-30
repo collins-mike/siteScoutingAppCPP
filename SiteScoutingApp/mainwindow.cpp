@@ -7,6 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->btn_FindSpecan->setEnabled(true);
+    ui->btn_RunTest->setEnabled(false);
+    ui->btn_SaveAs->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -24,6 +27,8 @@ int MainWindow::openSignalHound()
     if(openStatus != bbNoError) {
         ui->specInfoLabel->setText("Error Finding Device");
         ui->btn_FindSpecan->setEnabled(true);
+        ui->btn_RunTest->setEnabled(false);
+        ui->btn_SaveAs->setEnabled(false);
         return 0;
     }
 
@@ -37,10 +42,14 @@ void MainWindow::buttonsEnabled(bool trueFalse)
     if(trueFalse)
     {
         ui->btn_FindSpecan->setEnabled(true);
+        ui->btn_RunTest->setEnabled(true);
+        ui->btn_SaveAs->setEnabled(true);
     }
     else
     {
         ui->btn_FindSpecan->setEnabled(false);
+        ui->btn_RunTest->setEnabled(false);
+        ui->btn_SaveAs->setEnabled(false);
     }
 }
 

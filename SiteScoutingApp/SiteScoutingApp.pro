@@ -33,11 +33,15 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui
-DISTFILES +=
+DISTFILES += \
+    bb_api.lib \
+    bb_api.dll \
+    ftd2xx.dll
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../../libraries/spike_api_folder/bb_series/x86/ -lbb_api
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../../libraries/spike_api_folder/bb_series/x86/ -lbb_apid
-else:unix: LIBS += -L$$PWD/../../../../../../libraries/spike_api_folder/bb_series/x86/ -lbb_api
 
-INCLUDEPATH += $$PWD/../../../../../../libraries/spike_api_folder/bb_series/x86
-DEPENDPATH += $$PWD/../../../../../../libraries/spike_api_folder/bb_series/x86
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/./ -lbb_api
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/./ -lbb_api
+else:unix: LIBS += -L$$PWD/./ -lbb_api
+
+INCLUDEPATH += $$PWD/''
+DEPENDPATH += $$PWD/''
