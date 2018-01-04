@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>869</width>
-    <height>453</height>
+    <width>906</width>
+    <height>430</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>30</y>
+      <y>10</y>
       <width>171</width>
       <height>81</height>
      </rect>
@@ -31,20 +31,23 @@
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>30</y>
+      <y>10</y>
       <width>221</width>
       <height>81</height>
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>Click to find spectrum analyzer.</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_RunTest">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>120</y>
+      <y>100</y>
       <width>171</width>
       <height>81</height>
      </rect>
@@ -57,7 +60,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>210</y>
+      <y>190</y>
       <width>171</width>
       <height>81</height>
      </rect>
@@ -70,39 +73,55 @@
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>120</y>
+      <y>100</y>
       <width>221</width>
       <height>81</height>
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>Find spectrum analyzer before running test.</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="saveInfoLabel">
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>210</y>
+      <y>190</y>
       <width>221</width>
       <height>81</height>
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>No data to save.</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
     </property>
    </widget>
-   <widget class="QQuickWidget" name="quickWidget">
+   <widget class="QCustomPlot" name="plot" native="true">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>60</y>
-      <width>300</width>
-      <height>200</height>
+      <x>430</x>
+      <y>10</y>
+      <width>471</width>
+      <height>351</height>
      </rect>
     </property>
-    <property name="resizeMode">
-     <enum>QQuickWidget::SizeRootObjectToView</enum>
+   </widget>
+   <widget class="QPushButton" name="btn_advSettings">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>280</y>
+      <width>171</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Advanced Settings</string>
     </property>
    </widget>
   </widget>
@@ -111,7 +130,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>869</width>
+     <width>906</width>
      <height>20</height>
     </rect>
    </property>
@@ -129,9 +148,10 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>QQuickWidget</class>
+   <class>QCustomPlot</class>
    <extends>QWidget</extends>
-   <header>QtQuickWidgets/QQuickWidget</header>
+   <header>qcustomplot.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

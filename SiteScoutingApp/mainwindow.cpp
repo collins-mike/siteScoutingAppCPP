@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include "bb_api.h"
 #include <QtCharts>
+#include "testconstainer.h"
+#include <cstdlib>
 
 using namespace QtCharts;
 
@@ -13,7 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->btn_FindSpecan->setEnabled(true);
     ui->btn_RunTest->setEnabled(false);
     ui->btn_SaveAs->setEnabled(false);
-    ui->mainToolBar->addWidget(ui->chart);
+
+    this->createDefaultTests();
 }
 
 MainWindow::~MainWindow()
@@ -27,7 +30,8 @@ int MainWindow::openSignalHound()
     buttonsEnabled(false);
     qApp->processEvents();
 
-    bool status = specan.findSpecan();
+    this->drawPlot();
+    bool status = specan->findSpecan();
     if(!status) {
         ui->specInfoLabel->setText("Error Finding Device");
         ui->btn_FindSpecan->setEnabled(true);
@@ -57,30 +61,58 @@ void MainWindow::buttonsEnabled(bool trueFalse)
     }
 }
 
+void MainWindow::createDefaultTests()
+{
+    while(!testList.empty())
+    {
+        testList.pop_back();
+    }
+
+    testList.push_back(new TestConstainer(this, ui->plot, specan, 0, "test1", 100e6, .010, 20, 1000e6, 1000e6, -75 ));
+    testList.push_back(new TestConstainer(this, ui->plot, specan, 0, "test2", 100e6, .010, 20, 1000e6, 1000e6, -75 ));
+    testList.push_back(new TestConstainer(this, ui->plot, specan, 0, "test3", 100e6, .010, 20, 1000e6, 1000e6, -75 ));
+    testList.push_back(new TestConstainer(this, ui->plot, specan, 0, "test4", 100e6, .010, 20, 1000e6, 1000e6, -75 ));
+    testList.push_back(new TestConstainer(this, ui->plot, specan, 0, "test5", 100e6, .010, 20, 1000e6, 1000e6, -75 ));
+}
+
 void MainWindow::on_btn_FindSpecan_clicked()
 {
     openSignalHound();
 }
 
-void MainWindow::drawAChart()
+void MainWindow::drawPlot()
 {
-    QLineSeries *series = new QLineSeries();
+    // generate some data:
+    QVector<double> x(101), y(101); // initialize with entries 0..100
+    for (int i=0; i<101; ++i)
+    {
+      x[i] = i/50.0 - 1; // x goes from -1 to 1
+      y[i] = x[i]*x[i]; // let's plot a quadratic function
+    }
+    // create graph and assign data to it:
+    ui->plot->addGraph();
+    ui->plot->graph(0)->setData(x, y);
+    // give the axes some labels:
+    ui->plot->xAxis->setLabel("x");
+    ui->plot->yAxis->setLabel("y");
+    // set axes ranges, so we see all data:
+    ui->plot->xAxis->setRange(-1, 1);
+    ui->plot->yAxis->setRange(0, 1);
+    ui->plot->replot();
 
-    series->append(0, 6);
-      series->append(2, 4);
-      series->append(3, 8);
-      series->append(7, 4);
-      series->append(10, 5);
-      *series << QPointF(11, 1) << QPointF(13, 3) << QPointF(17, 6) << QPointF(18, 3) << QPointF(20, 2);
+    QString msg="";
+    for(int i=0; i<testList.size();i++)
+    {
+        msg+=testList[i]->getName();
+    }
+    ui->runInfoLabel->setText(msg);
+}
 
-     QChart *chart = new QChart();
-     chart->legend()->hide();
-     chart->addSeries(series);
-     chart->createDefaultAxes();
-     chart->setTitle("Simple line chart example");
 
-     QChartView *chartView = new QChartView(chart);
-     chartView->setRenderHint(QPainter::Antialiasing);
-     ui->chart->setAutoFillBackground(true);
-
+void MainWindow::on_btn_RunTest_clicked()
+{
+    for(int i=0; i<testList.size();i++)
+    {
+        testList[i]->RunSweep();
+    }
 }

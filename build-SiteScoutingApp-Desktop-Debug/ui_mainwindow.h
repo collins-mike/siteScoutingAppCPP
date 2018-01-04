@@ -21,7 +21,7 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
-#include "QtQuickWidgets/QQuickWidget"
+#include "qcustomplot.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -35,7 +35,8 @@ public:
     QPushButton *btn_SaveAs;
     QLabel *runInfoLabel;
     QLabel *saveInfoLabel;
-    QQuickWidget *quickWidget;
+    QCustomPlot *plot;
+    QPushButton *btn_advSettings;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -44,35 +45,40 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(869, 453);
+        MainWindow->resize(906, 430);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         btn_FindSpecan = new QPushButton(centralWidget);
         btn_FindSpecan->setObjectName(QStringLiteral("btn_FindSpecan"));
-        btn_FindSpecan->setGeometry(QRect(20, 30, 171, 81));
+        btn_FindSpecan->setGeometry(QRect(20, 10, 171, 81));
         specInfoLabel = new QLabel(centralWidget);
         specInfoLabel->setObjectName(QStringLiteral("specInfoLabel"));
-        specInfoLabel->setGeometry(QRect(200, 30, 221, 81));
+        specInfoLabel->setGeometry(QRect(200, 10, 221, 81));
+        specInfoLabel->setWordWrap(true);
         btn_RunTest = new QPushButton(centralWidget);
         btn_RunTest->setObjectName(QStringLiteral("btn_RunTest"));
-        btn_RunTest->setGeometry(QRect(20, 120, 171, 81));
+        btn_RunTest->setGeometry(QRect(20, 100, 171, 81));
         btn_SaveAs = new QPushButton(centralWidget);
         btn_SaveAs->setObjectName(QStringLiteral("btn_SaveAs"));
-        btn_SaveAs->setGeometry(QRect(20, 210, 171, 81));
+        btn_SaveAs->setGeometry(QRect(20, 190, 171, 81));
         runInfoLabel = new QLabel(centralWidget);
         runInfoLabel->setObjectName(QStringLiteral("runInfoLabel"));
-        runInfoLabel->setGeometry(QRect(200, 120, 221, 81));
+        runInfoLabel->setGeometry(QRect(200, 100, 221, 81));
+        runInfoLabel->setWordWrap(true);
         saveInfoLabel = new QLabel(centralWidget);
         saveInfoLabel->setObjectName(QStringLiteral("saveInfoLabel"));
-        saveInfoLabel->setGeometry(QRect(200, 210, 221, 81));
-        quickWidget = new QQuickWidget(centralWidget);
-        quickWidget->setObjectName(QStringLiteral("quickWidget"));
-        quickWidget->setGeometry(QRect(380, 60, 300, 200));
-        quickWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
+        saveInfoLabel->setGeometry(QRect(200, 190, 221, 81));
+        saveInfoLabel->setWordWrap(true);
+        plot = new QCustomPlot(centralWidget);
+        plot->setObjectName(QStringLiteral("plot"));
+        plot->setGeometry(QRect(430, 10, 471, 351));
+        btn_advSettings = new QPushButton(centralWidget);
+        btn_advSettings->setObjectName(QStringLiteral("btn_advSettings"));
+        btn_advSettings->setGeometry(QRect(20, 280, 171, 81));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 869, 20));
+        menuBar->setGeometry(QRect(0, 0, 906, 20));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -90,11 +96,12 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         btn_FindSpecan->setText(QApplication::translate("MainWindow", "Find Spectrum Analyzer", nullptr));
-        specInfoLabel->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        specInfoLabel->setText(QApplication::translate("MainWindow", "Click to find spectrum analyzer.", nullptr));
         btn_RunTest->setText(QApplication::translate("MainWindow", "Run Test", nullptr));
         btn_SaveAs->setText(QApplication::translate("MainWindow", "Save As", nullptr));
-        runInfoLabel->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
-        saveInfoLabel->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        runInfoLabel->setText(QApplication::translate("MainWindow", "Find spectrum analyzer before running test.", nullptr));
+        saveInfoLabel->setText(QApplication::translate("MainWindow", "No data to save.", nullptr));
+        btn_advSettings->setText(QApplication::translate("MainWindow", "Advanced Settings", nullptr));
     } // retranslateUi
 
 };

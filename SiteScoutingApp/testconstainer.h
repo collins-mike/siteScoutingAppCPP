@@ -3,25 +3,35 @@
 
 #include <QMainWindow>
 #include <cstdlib>
+#include "qcustomplot.h"
+#include "specan.h"
 
 class TestConstainer
 {
 public:
-    TestConstainer();
+    TestConstainer(QMainWindow* PARENT, QCustomPlot* PLOT, Specan* SPECAN,
+                   int TESTNUM, QString NAME, double RBW,
+                   double SWEEPTIME ,int SWEEPNUM,
+                   double FREQCENTER, double FREQSPAN, float THRESHOLD);
     void RunSweep();
+    QString getName();
 private:
+
+    QMainWindow *parent;
+    QCustomPlot *plot;
+    Specan *specan;
     int testNum;
-    uint16_t rbw;
-    float sweepTime;
-    uint16_t sweepNum;
+    double rbw;
+    double sweepTime;
+    int sweepNum;
     QString name;
-    uint32_t freqCenter;
-    uint32_t freqSpan;
+    double freqCenter;
+    double freqSpan;
     float threshold;
-    std::vector<float> dataReturn;
-    std::vector<float> dataHold;
+    std::vector<double> dataReturn;
+    std::vector<double> dataHold;
     std::vector<uint32_t> freqArray;
-    std::vector<float> peakArray;
+    std::vector<double> peakArray;
     std::vector<uint32_t> peakFreqArray;
     QString title;
     int dataMax=-20;

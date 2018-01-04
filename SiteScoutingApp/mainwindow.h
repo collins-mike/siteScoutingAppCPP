@@ -1,11 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <cstdlib>
 #include <QMainWindow>
 #include "specan.h"
-#include <QtCharts>
-
-using namespace QtCharts;
+#include "testconstainer.h"
 
 namespace Ui {
 class MainWindow;
@@ -20,14 +19,18 @@ public:
     ~MainWindow();
     int openSignalHound();
     void buttonsEnabled(bool);
-    void drawAChart();
+    void drawPlot();
+    void createDefaultTests();
 
 private slots:
     void on_btn_FindSpecan_clicked();
 
+    void on_btn_RunTest_clicked();
+
 private:
     Ui::MainWindow *ui;
-    Specan specan;
+    Specan* specan = new Specan;
+    std::vector<TestConstainer*> testList;
 };
 
 #endif // MAINWINDOW_H
