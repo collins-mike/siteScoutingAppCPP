@@ -16,7 +16,7 @@ bool Specan::findSpecan()
     return true;
 }
 
-float Specan::getFullSweep(float &sweepReturn)
+void Specan::getFullSweep(float* sweepReturn)
 {
     // Configure a sweep from 850MHz to 950MHz with an
     //  RBW and VBW of 10kHz and an expected input of -20dBm
@@ -45,7 +45,6 @@ float Specan::getFullSweep(float &sweepReturn)
 
     delete [] min;
     delete [] max;
-    return 0;
 }
 
 void Specan::setRBW(double RBW)

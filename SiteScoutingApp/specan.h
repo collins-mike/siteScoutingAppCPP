@@ -7,7 +7,7 @@ class Specan
 public:
     Specan();
     bool findSpecan();
-    float getFullSweep(float &sweepReturn);
+    void getFullSweep(float* sweepReturn);
 
     void setRBW(double);
     void setSweepTime(double);
