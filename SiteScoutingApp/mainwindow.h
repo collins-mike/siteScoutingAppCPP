@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "specan.h"
+#include <QtCharts>
+
+using namespace QtCharts;
 
 namespace Ui {
 class MainWindow;
@@ -16,13 +20,14 @@ public:
     ~MainWindow();
     int openSignalHound();
     void buttonsEnabled(bool);
+    void drawAChart();
 
 private slots:
     void on_btn_FindSpecan_clicked();
 
 private:
     Ui::MainWindow *ui;
-    int handle;
+    Specan specan;
 };
 
 #endif // MAINWINDOW_H

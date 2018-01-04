@@ -13,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->btn_FindSpecan->setEnabled(true);
     ui->btn_RunTest->setEnabled(false);
     ui->btn_SaveAs->setEnabled(false);
-    ui->mainToolBar->addWidget(ui->chart);
 }
 
 MainWindow::~MainWindow()

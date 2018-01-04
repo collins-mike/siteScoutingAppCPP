@@ -32,11 +32,11 @@ struct qt_meta_stringdata_MainWindow_t {
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
 QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
-QT_MOC_LITERAL(1, 11, 25), // "on_btn_findDevice_clicked"
+QT_MOC_LITERAL(1, 11, 25), // "on_btn_FindSpecan_clicked"
 QT_MOC_LITERAL(2, 37, 0) // ""
 
     },
-    "MainWindow\0on_btn_findDevice_clicked\0"
+    "MainWindow\0on_btn_FindSpecan_clicked\0"
     ""
 };
 #undef QT_MOC_LITERAL
@@ -69,7 +69,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         MainWindow *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_btn_findDevice_clicked(); break;
+        case 0: _t->on_btn_FindSpecan_clicked(); break;
         default: ;
         }
     }
