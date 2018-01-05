@@ -1,11 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "bb_api.h"
-#include <QtCharts>
 #include "testconstainer.h"
 #include <cstdlib>
 
-using namespace QtCharts;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -103,9 +101,9 @@ void MainWindow::drawPlot()
     QString msg="";
     for(unsigned int i=0; i<testList.size();i++)
     {
-        msg+=testList[i]->getName();
+        msg+=testList[i]->getName()+" ";
     }
-    ui->runInfoLabel->setText(msg + " ");
+    ui->runInfoLabel->setText(msg);
 }
 
 

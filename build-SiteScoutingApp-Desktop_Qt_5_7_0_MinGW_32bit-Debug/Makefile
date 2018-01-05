@@ -205,6 +205,7 @@ Makefile: ../SiteScoutingApp/SiteScoutingApp.pro C:/Qt/Qt5.7.0/5.7/mingw53_32/mk
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/lex.prf \
 		../SiteScoutingApp/SiteScoutingApp.pro \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/lib/qtmaind.prl \
+		C:/Qt/Qt5.7.0/5.7/mingw53_32/lib/Qt5PrintSupport.prl \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/lib/Qt5Widgets.prl \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/lib/Qt5Gui.prl \
 		C:/Qt/Qt5.7.0/5.7/mingw53_32/lib/Qt5Core.prl
@@ -355,6 +356,7 @@ C:/Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/yacc.prf:
 C:/Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/lex.prf:
 ../SiteScoutingApp/SiteScoutingApp.pro:
 C:/Qt/Qt5.7.0/5.7/mingw53_32/lib/qtmaind.prl:
+C:/Qt/Qt5.7.0/5.7/mingw53_32/lib/Qt5PrintSupport.prl:
 C:/Qt/Qt5.7.0/5.7/mingw53_32/lib/Qt5Widgets.prl:
 C:/Qt/Qt5.7.0/5.7/mingw53_32/lib/Qt5Gui.prl:
 C:/Qt/Qt5.7.0/5.7/mingw53_32/lib/Qt5Core.prl:
