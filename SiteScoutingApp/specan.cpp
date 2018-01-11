@@ -1,6 +1,6 @@
 #include "specan.h"
 #include "bb_api.h"
-#include <cstdlib>
+#include <vector>
 
 Specan::Specan()
 {
@@ -16,7 +16,7 @@ bool Specan::findSpecan()
     return true;
 }
 
-void Specan::getFullSweep(float* sweepReturn)
+void Specan::getFullSweep(std::vector<float>* sweepReturn)
 {
     // Configure a sweep from 850MHz to 950MHz with an
     //  RBW and VBW of 10kHz and an expected input of -20dBm
@@ -42,6 +42,11 @@ void Specan::getFullSweep(float* sweepReturn)
 
     // Get one or many sweeps with these configurations
     bbFetchTrace_32f(handle, sweepSize, min, max);
+
+    for(int i=0;i<sweepSize;i++)
+    {
+        &sweepReturn->pop_back(max[i]);
+    }
 
     delete [] min;
     delete [] max;

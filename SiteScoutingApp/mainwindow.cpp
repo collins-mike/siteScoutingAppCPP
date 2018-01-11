@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "bb_api.h"
 #include "testconstainer.h"
+#include "advsettings.h"
 #include <cstdlib>
 
 
@@ -113,4 +114,11 @@ void MainWindow::on_btn_RunTest_clicked()
     {
         testList[i]->RunSweep();
     }
+}
+
+void MainWindow::on_btn_advSettings_clicked()
+{
+    advSettings *advSet = new advSettings();
+    advSet->exec();
+
 }

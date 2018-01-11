@@ -27,6 +27,8 @@ private slots:
 
     void on_btn_RunTest_clicked();
 
+    void on_btn_advSettings_clicked();
+
 private:
     Ui::MainWindow *ui;
     Specan* specan = new Specan;

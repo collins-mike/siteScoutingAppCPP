@@ -1,13 +1,13 @@
 #ifndef SPECAN_H
 #define SPECAN_H
-
+#include <vector>
 
 class Specan
 {
 public:
     Specan();
     bool findSpecan();
-    void getFullSweep(float* sweepReturn);
+    void getFullSweep(std::vector<float>* sweepReturn);
 
     void setRBW(double);
     void setSweepTime(double);

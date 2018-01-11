@@ -28,10 +28,10 @@ private:
     double freqCenter;
     double freqSpan;
     float threshold;
-    std::vector<double> dataReturn;
-    std::vector<double> dataHold;
+    std::vector<float> dataReturn;
+    std::vector<float> dataHold;
     std::vector<uint32_t> freqArray;
-    std::vector<double> peakArray;
+    std::vector<float> peakArray;
     std::vector<uint32_t> peakFreqArray;
     QString title;
     int dataMax=-20;

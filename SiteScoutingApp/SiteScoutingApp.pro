@@ -28,17 +28,20 @@ SOURCES += \
         mainwindow.cpp \
     testconstainer.cpp \
     specan.cpp \
-    qcustomplot.cpp
+    qcustomplot.cpp \
+    advsettings.cpp
 
 HEADERS += \
         mainwindow.h \
     bb_api.h \
     testconstainer.h \
     specan.h \
-    qcustomplot.h
+    qcustomplot.h \
+    advsettings.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    advsettings.ui
 DISTFILES += \
     bb_api.lib \
     bb_api.dll \
