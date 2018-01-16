@@ -45,7 +45,7 @@ void Specan::getFullSweep(std::vector<float>* sweepReturn)
 
     for(int i=0;i<sweepSize;i++)
     {
-        &sweepReturn->pop_back(max[i]);
+        //&sweepReturn->pop_back(max[i]);
     }
 
     delete [] min;
