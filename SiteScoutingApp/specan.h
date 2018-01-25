@@ -13,8 +13,10 @@ public:
     void setSweepTime(double);
     void setFreqCenter(double);
     void setFreqSpan(double);
-private:
     int handle;
+
+private:
+
     double rbw;
     double sweepTime;
     double freqCenter;

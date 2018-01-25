@@ -40,7 +40,8 @@ int MainWindow::openSignalHound()
     }
 
     ui->specInfoLabel->setText("Device found!");
-    buttonsEnabled(true);
+    ui->btn_FindSpecan->setEnabled(false);
+    ui->btn_RunTest->setEnabled(true);
     return 1;
 }
 
@@ -110,10 +111,14 @@ void MainWindow::drawPlot()
 
 void MainWindow::on_btn_RunTest_clicked()
 {
+    ui->btn_RunTest->setEnabled(false);
     for(unsigned int i=0; i<testList.size();i++)
     {
         testList[i]->RunSweep();
     }
+
+    ui->btn_RunTest->setEnabled(true);
+
 }
 
 void MainWindow::on_btn_advSettings_clicked()

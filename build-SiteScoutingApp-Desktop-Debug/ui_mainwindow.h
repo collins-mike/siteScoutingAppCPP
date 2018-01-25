@@ -45,7 +45,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(906, 430);
+        MainWindow->resize(1253, 440);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         btn_FindSpecan = new QPushButton(centralWidget);
@@ -71,14 +71,14 @@ public:
         saveInfoLabel->setWordWrap(true);
         plot = new QCustomPlot(centralWidget);
         plot->setObjectName(QStringLiteral("plot"));
-        plot->setGeometry(QRect(430, 10, 471, 351));
+        plot->setGeometry(QRect(430, 10, 811, 351));
         btn_advSettings = new QPushButton(centralWidget);
         btn_advSettings->setObjectName(QStringLiteral("btn_advSettings"));
         btn_advSettings->setGeometry(QRect(20, 280, 171, 81));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 906, 20));
+        menuBar->setGeometry(QRect(0, 0, 1253, 20));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
