@@ -12,9 +12,10 @@ public:
     TestConstainer(QMainWindow* PARENT, QCustomPlot* PLOT, Specan* SPECAN,
                    int TESTNUM, QString NAME, double RBW,
                    double SWEEPTIME ,int SWEEPNUM,
-                   double FREQCENTER, double FREQSPAN, float THRESHOLD);
+                   double FREQCENTER, double FREQSPAN, float THRESHOLD,double REFERENCE);
     void RunSweep();
     QString getName();
+    double getDoubleVectorMin(QVector<double>&);
 private:
 
     QMainWindow *parent;
@@ -28,6 +29,7 @@ private:
     double freqCenter;
     double freqSpan;
     float threshold;
+    double reference;
     QVector<double> dataReturn;
     QVector<float> dataHold;
     QVector<uint32_t> freqArray;

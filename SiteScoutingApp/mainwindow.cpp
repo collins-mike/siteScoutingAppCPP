@@ -68,11 +68,11 @@ void MainWindow::createDefaultTests()
         testList.pop_back();
     }
 
-    testList.push_back(new TestConstainer(this, ui->plot, specan, 0, "5500 MHz", 157.1e3, .010, 20, 5500e6, 1e9, -60 ));
-    testList.push_back(new TestConstainer(this, ui->plot, specan, 1, "4000 MHz", 157.1e3, .010, 20, 4000e6, 1e9, -60 ));
-    testList.push_back(new TestConstainer(this, ui->plot, specan, 2, "915 MHz", 39.45e3, .010, 20, 915e6, 100e6, -60 ));
-    testList.push_back(new TestConstainer(this, ui->plot, specan, 3, "863 MHz", 39.45e3, .010, 20, 863e6, 100e6, -60 ));
-    testList.push_back(new TestConstainer(this, ui->plot, specan, 4, "Wide Band(30~6000 MHz)", 39.45e3, .010, 20, 3015e6, 5970e6, -60 ));
+    testList.push_back(new TestConstainer(this, ui->plot, specan, 0, "5500 MHz", 157.1e3, .010, 20, 5500e6, 1e9, -60, -30));
+    testList.push_back(new TestConstainer(this, ui->plot, specan, 1, "4000 MHz", 157.1e3, .010, 20, 4000e6, 1e9, -60, -30));
+    testList.push_back(new TestConstainer(this, ui->plot, specan, 2, "915 MHz", 39.45e3, .010, 20, 915e6, 100e6, -60, -30));
+    testList.push_back(new TestConstainer(this, ui->plot, specan, 3, "863 MHz", 39.45e3, .010, 20, 863e6, 100e6, -60, -30));
+    testList.push_back(new TestConstainer(this, ui->plot, specan, 4, "Wide Band(30~6000 MHz)", 39.45e3, .010, 20, 3015e6, 5970e6, -60, -30));
 }
 
 void MainWindow::on_btn_FindSpecan_clicked()

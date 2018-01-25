@@ -5,7 +5,7 @@
 TestConstainer::TestConstainer(QMainWindow *PARENT, QCustomPlot *PLOT, Specan *SPECAN,
                                int TESTNUM, QString NAME, double RBW,
                                double SWEEPTIME ,int SWEEPNUM,
-                               double FREQCENTER, double FREQSPAN, float THRESHOLD)
+                               double FREQCENTER, double FREQSPAN, float THRESHOLD, double REFERENCE)
 {
     this->parent    = PARENT;
     this->plot      = PLOT;
@@ -19,6 +19,7 @@ TestConstainer::TestConstainer(QMainWindow *PARENT, QCustomPlot *PLOT, Specan *S
     freqCenter      = FREQCENTER;
     freqSpan        = FREQSPAN;
     threshold       = THRESHOLD;
+    reference       = REFERENCE;
 }
 
 void TestConstainer::RunSweep()
@@ -29,7 +30,7 @@ void TestConstainer::RunSweep()
     freqArray.clear();
     peakArray.clear();
     peakFreqArray.clear();
-    double startFreq  = this->freqCenter - this->freqSpan/2;
+    //double startFreq  = this->freqCenter - this->freqSpan/2;
     double endFreq    = this->freqCenter + this->freqSpan/2;
 
 
@@ -41,7 +42,7 @@ void TestConstainer::RunSweep()
         //  RBW and VBW of 10kHz and an expected input of -20dBm
         bbConfigureAcquisition(specan->handle, BB_MIN_AND_MAX, BB_LOG_SCALE);
         bbConfigureCenterSpan(specan->handle, freqCenter, freqSpan);
-        bbConfigureLevel(specan->handle, -20.0, BB_AUTO_ATTEN);
+        bbConfigureLevel(specan->handle, reference, BB_AUTO_ATTEN);
         bbConfigureGain(specan->handle, BB_AUTO_GAIN);
         bbConfigureSweepCoupling(specan->handle, rbw, rbw, sweepTime, BB_RBW_SHAPE_FLATTOP, BB_NO_SPUR_REJECT);
         bbConfigureProcUnits(specan->handle, BB_POWER);
@@ -62,7 +63,7 @@ void TestConstainer::RunSweep()
         // Get one or many sweeps with these configurations
         bbFetchTrace_32f(specan->handle, sweepSize, min, max);
 
-        for(int i=0;i<sweepSize;i++)
+        for(unsigned int i=0;i<sweepSize;i++)
         {
             dataReturn.push_back(max[i]);
         }
@@ -71,8 +72,10 @@ void TestConstainer::RunSweep()
         QVector<double> freqs;
         for (double i=0; i<sweepSize; ++i)
         {
-          freqs.push_back(i);
+          freqs.push_back(startFreq+i*binSize);
         }
+
+        double plotMinY=getDoubleVectorMin(dataReturn);
         // create graph and assign data to it:
         plot->addGraph();
         plot->graph(0)->setData(freqs, dataReturn);
@@ -80,8 +83,8 @@ void TestConstainer::RunSweep()
         plot->xAxis->setLabel("x");
         plot->yAxis->setLabel("y");
         // set axes ranges, so we see all data:
-        plot->xAxis->setRange(0,sweepSize);
-        plot->yAxis->setRange(-100,0);
+        plot->xAxis->setRange(startFreq,endFreq);
+        plot->yAxis->setRange(plotMinY-10,0);
         plot->replot();
 
         freqs.clear();
@@ -91,8 +94,19 @@ void TestConstainer::RunSweep()
         delete [] max;
 
     }
+}
 
-
+double TestConstainer::getDoubleVectorMin(QVector<double> &vect)
+{
+    double min=vect[0];
+    for(int i=0;i<vect.length();i++)
+    {
+        if(vect[i]<min)
+        {
+            min=vect[i];
+        }
+    }
+    return min;
 }
 
 QString TestConstainer::getName()
